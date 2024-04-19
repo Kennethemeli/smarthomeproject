@@ -1,19 +1,28 @@
 syntax = "proto3";
 
-package com.ken.smartthermostart;
+package com.ken.temperature;
 option java_multiple_files = true;
-option java_package = "com.ken.smartthermostart";
-option java_outer_classname = "SmartThermostatProto";
+option java_package = "com.ken.temperature";
+option java_outer_classname = "TemperatureControlServiceProto";
 
-service SmartThermostatService {
-  rpc AdjustTemperature(stream TemperatureRequest) returns (TemperatureResponse);
+service TemperatureControlService {
+  // Unary RPC for setting the temperature
+  rpc SetTemperature(TemperatureRequest) returns (TemperatureResponse) {}
+
+  // Server-side streaming RPC for getting temperature updates
+  rpc StreamTemperature(TemperatureStreamRequest) returns (stream TemperatureResponse) {}
 }
 
+// Request for setting the temperature
 message TemperatureRequest {
-  string thermostat_id = 1;
-  int32 temperature = 2;
+  int32 desiredTemperature = 1;
 }
 
+// Request for streaming temperature updates
+message TemperatureStreamRequest {}
+
+// Temperature response
 message TemperatureResponse {
-  string message = 1;
+  int32 currentTemperature = 1;
+  bool success = 2;
 }
