@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package com.ken.security;
+option java_multiple_files = true;
+option java_package = "com.ken.security";
+option java_outer_classname = "SecurityServiceProto";
+
+// Security service for locks and alarms
+service SecurityService {
+  // Unary RPC to toggle lock
+  rpc ToggleLock(LockRequest) returns (LockResponse) {}
+
+  // Client-side streaming RPC for multiple security settings at once
+  rpc SetSecuritySettings(stream SecuritySettingsRequest) returns (SecuritySettingsResponse) {}
+}
+
+// Request to toggle locks
+message LockRequest {
+  bool lock = 1; // true to lock, false to unlock
+}
+
+// Response for lock toggle
+message LockResponse {
+  bool success = 1;
+}
+
+// Request for security settings via client-side streaming
+message SecuritySettingsRequest {
+  bool alarmOn = 1; // true to turn on, false to turn off
+  bool lock = 2; // true to lock, false to unlock
+}
+
+// Response for setting multiple security settings
+message SecuritySettingsResponse {
+  bool success = 1;
+}
