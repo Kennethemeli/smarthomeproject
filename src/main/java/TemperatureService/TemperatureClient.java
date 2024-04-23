@@ -26,7 +26,7 @@ public class TemperatureClient {
         if (response.getSuccess()) {
             System.out.println("Temperature set successfully!");
         } else {
-            System.out.println("Failed to set temperature.");
+            System.out.println("Failed to set temperature");
         }
     }
 
