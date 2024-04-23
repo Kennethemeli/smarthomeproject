@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="SmartHomeController"
+            prefHeight="400.0" prefWidth="600.0">
+    <VBox spacing="20" layoutX="15" layoutY="15">
+        <Label text="Set Temperature:" fx:id="tempLabel"/>
+        <Slider min="15" max="30" value="20" showTickLabels="true" showTickMarks="true"
+                majorTickUnit="5" blockIncrement="1" fx:id="tempSlider"/>
+        <Label text="Security Controls:"/>
+        <Button text="Lock" fx:id="lockButton" onAction="#handleLock"/>
+        <Button text="Unlock" fx:id="unlockButton" onAction="#handleUnlock"/>
+    </VBox>
+</AnchorPane>
