@@ -12,7 +12,6 @@ public class SmartHomeApp extends Application {
         // Load the FXML file
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SmartHomeController.fxml"));
         Parent root = loader.load();
-
         // Set the scene
         Scene scene = new Scene(root);
         primaryStage.setTitle("Smart Home Controller");

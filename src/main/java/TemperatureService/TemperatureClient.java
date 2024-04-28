@@ -30,30 +30,12 @@ public class TemperatureClient {
         }
     }
 
-    public void streamTemperature() {
+    public void streamTemperature(StreamObserver<TemperatureResponse> responseObserver) {
         TemperatureStreamRequest request = TemperatureStreamRequest.newBuilder().build();
-        asyncStub.streamTemperature(request, new StreamObserver<TemperatureResponse>() {
-            @Override
-            public void onNext(TemperatureResponse response) {
-                System.out.println("Current temperature: " + response.getCurrentTemperature());
-            }
-
-            @Override
-            public void onError(Throwable t) {
-                System.err.println("Error: " + t.getMessage());
-            }
-
-            @Override
-            public void onCompleted() {
-                System.out.println("Streaming temperatures completed.");
-            }
-        });
+        asyncStub.streamTemperature(request, responseObserver);
     }
 
     public static void main(String[] args) throws InterruptedException {
         TemperatureClient client = new TemperatureClient("localhost", 3001);
-        client.setTemperature(23); // Unary call
-        client.streamTemperature(); // Server streaming call
-        Thread.sleep(5000); // Wait to see server streaming output
     }
 }

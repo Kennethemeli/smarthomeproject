@@ -1,20 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Ellipse?>
 
-<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="SmartHomeController"
-            prefHeight="400.0" prefWidth="600.0">
-    <VBox spacing="20" layoutX="15" layoutY="15">
-        <Label text="Set Temperature:" fx:id="tempLabel"/>
-        <Slider min="15" max="30" value="20" showTickLabels="true" showTickMarks="true"
-                majorTickUnit="5" blockIncrement="1" fx:id="tempSlider"/>
-        <Label text="Security Controls:"/>
-        <Button text="Lock" fx:id="lockButton" onAction="#handleLock"/>
-        <Button text="Unlock" fx:id="unlockButton" onAction="#handleUnlock"/>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SmartHomeController">
+    <VBox layoutX="15" layoutY="15" spacing="20">
+        <Label fx:id="tempLabel" text="Set Temperature:" />
+        <Slider fx:id="tempSlider" blockIncrement="1" majorTickUnit="5" max="30" min="15" showTickLabels="true" showTickMarks="true" value="20" />
+        <Label text="Security Controls:" />
+        <Button fx:id="lockButton" onAction="#handleLock" text="Lock" />
+      <Ellipse fx:id="securityLight" fill="DODGERBLUE" radiusX="26.0" radiusY="31.0" stroke="BLACK" strokeType="INSIDE" />
+        <Button fx:id="unlockButton" onAction="#handleUnlock" text="Unlock" />
     </VBox>
+   <Button fx:id="stramTemperatureButton" layoutX="205.0" layoutY="15.0" mnemonicParsing="false" onAction="#streamTemperatureAction" text="Start Temperature Sensor" />
+   <Label layoutX="218.0" layoutY="56.0" text="Temperature: " />
+   <Label fx:id="tempData" layoutX="300.0" layoutY="56.0" />
+   <ToggleButton fx:id="toggleLightButton" layoutX="300.0" layoutY="157.0" mnemonicParsing="false" onAction="#toggleLightAction" text="ON" />
+   <Circle fx:id="lightControl" fill="RED" layoutX="363.0" layoutY="170.0" radius="19.0" stroke="BLACK" strokeType="INSIDE" />
+   <Label layoutX="303.0" layoutY="124.0" text="Light Control" />
+   <TextField fx:id="lightIdField" layoutX="260.0" layoutY="210.0" />
+   <ToggleButton fx:id="toggleButton" layoutX="438.0" layoutY="210.0" mnemonicParsing="false" onAction="#handleToggleLightAction" text="ToggleButton" />
+   <Label fx:id="responseLabel" layoutX="303.0" layoutY="248.0" />
 </AnchorPane>

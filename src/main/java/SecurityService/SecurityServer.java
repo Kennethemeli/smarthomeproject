@@ -14,7 +14,7 @@ import java.util.Properties;
 public class SecurityServer {
     private Server server;
 
-    private void start() throws IOException {
+    public void start() throws IOException {
         int port = 3002;
         server = ServerBuilder.forPort(port)
                 .addService(new SecurityServerImpl())

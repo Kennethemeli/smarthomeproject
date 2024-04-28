@@ -14,7 +14,7 @@ import java.util.Properties;
 public class TemperatureServer {
     private Server server;
 
-    private void start() throws IOException {
+    public void start() throws IOException {
         int port = 3001;
         server = ServerBuilder.forPort(port)
                 .addService(new TemperatureServerImpl())
