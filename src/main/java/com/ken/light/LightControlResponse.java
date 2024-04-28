@@ -4,10 +4,6 @@
 package com.ken.light;
 
 /**
- * <pre>
- * Response for interactive light control
- * </pre>
- *
  * Protobuf type {@code com.ken.light.LightControlResponse}
  */
 public  final class LightControlResponse extends
@@ -144,10 +140,6 @@ private static final long serialVersionUID = 0L;
   public static final int MESSAGE_FIELD_NUMBER = 3;
   private volatile java.lang.Object message_;
   /**
-   * <pre>
-   * feedback message
-   * </pre>
-   *
    * <code>string message = 3;</code>
    */
   public java.lang.String getMessage() {
@@ -163,10 +155,6 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <pre>
-   * feedback message
-   * </pre>
-   *
    * <code>string message = 3;</code>
    */
   public com.google.protobuf.ByteString
@@ -361,10 +349,6 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * Response for interactive light control
-   * </pre>
-   *
    * Protobuf type {@code com.ken.light.LightControlResponse}
    */
   public static final class Builder extends
@@ -622,10 +606,6 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object message_ = "";
     /**
-     * <pre>
-     * feedback message
-     * </pre>
-     *
      * <code>string message = 3;</code>
      */
     public java.lang.String getMessage() {
@@ -641,10 +621,6 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <pre>
-     * feedback message
-     * </pre>
-     *
      * <code>string message = 3;</code>
      */
     public com.google.protobuf.ByteString
@@ -661,10 +637,6 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <pre>
-     * feedback message
-     * </pre>
-     *
      * <code>string message = 3;</code>
      */
     public Builder setMessage(
@@ -678,10 +650,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     * feedback message
-     * </pre>
-     *
      * <code>string message = 3;</code>
      */
     public Builder clearMessage() {
@@ -691,10 +659,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     * feedback message
-     * </pre>
-     *
      * <code>string message = 3;</code>
      */
     public Builder setMessageBytes(

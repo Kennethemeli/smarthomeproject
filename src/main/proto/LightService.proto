@@ -9,32 +9,37 @@ option java_outer_classname = "LightServiceProto";
 
 // Lighting service for managing lights
 service LightingService {
-  // Unary RPC to toggle lights
+
   rpc ToggleLights(LightRequest) returns (LightResponse) {}
 
-  // Bi-directional streaming RPC for continuous control and feedback
   rpc InteractiveLightControl(stream LightControlRequest) returns (stream LightControlResponse) {}
+
+  rpc StreamMotion (stream MotionRequest) returns (stream MotionResponse) {}
 }
 
-// Request to toggle lights
 message LightRequest {
-  bool on = 1; // true to turn on, false to turn off
+  bool on = 1;
 }
 
-// Response for toggling lights
 message LightResponse {
   bool success = 1;
 }
 
-// Request for interactive light control
 message LightControlRequest {
   string lightId = 1;
   bool on = 2;
 }
 
-// Response for interactive light control
 message LightControlResponse {
   string lightId = 1;
   bool success = 2;
-  string message = 3; // feedback message
+  string message = 3;
+}
+
+message MotionRequest {
+  bool isMotionDetected = 1;
+}
+
+message MotionResponse {
+  bool  isAlarmOn = 1;
 }

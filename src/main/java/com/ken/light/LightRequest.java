@@ -4,10 +4,6 @@
 package com.ken.light;
 
 /**
- * <pre>
- * Request to toggle lights
- * </pre>
- *
  * Protobuf type {@code com.ken.light.LightRequest}
  */
 public  final class LightRequest extends
@@ -87,10 +83,6 @@ private static final long serialVersionUID = 0L;
   public static final int ON_FIELD_NUMBER = 1;
   private boolean on_;
   /**
-   * <pre>
-   * true to turn on, false to turn off
-   * </pre>
-   *
    * <code>bool on = 1;</code>
    */
   public boolean getOn() {
@@ -255,10 +247,6 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * Request to toggle lights
-   * </pre>
-   *
    * Protobuf type {@code com.ken.light.LightRequest}
    */
   public static final class Builder extends
@@ -407,20 +395,12 @@ private static final long serialVersionUID = 0L;
 
     private boolean on_ ;
     /**
-     * <pre>
-     * true to turn on, false to turn off
-     * </pre>
-     *
      * <code>bool on = 1;</code>
      */
     public boolean getOn() {
       return on_;
     }
     /**
-     * <pre>
-     * true to turn on, false to turn off
-     * </pre>
-     *
      * <code>bool on = 1;</code>
      */
     public Builder setOn(boolean value) {
@@ -430,10 +410,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     * true to turn on, false to turn off
-     * </pre>
-     *
      * <code>bool on = 1;</code>
      */
     public Builder clearOn() {

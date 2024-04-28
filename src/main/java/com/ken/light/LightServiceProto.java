@@ -34,6 +34,16 @@ public final class LightServiceProto {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_ken_light_LightControlResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_ken_light_MotionRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_ken_light_MotionRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_ken_light_MotionResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_ken_light_MotionResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -48,13 +58,17 @@ public final class LightServiceProto {
       "\022\017\n\007success\030\001 \001(\010\"2\n\023LightControlRequest" +
       "\022\017\n\007lightId\030\001 \001(\t\022\n\n\002on\030\002 \001(\010\"I\n\024LightCo" +
       "ntrolResponse\022\017\n\007lightId\030\001 \001(\t\022\017\n\007succes" +
-      "s\030\002 \001(\010\022\017\n\007message\030\003 \001(\t2\310\001\n\017LightingSer" +
+      "s\030\002 \001(\010\022\017\n\007message\030\003 \001(\t\")\n\rMotionReques" +
+      "t\022\030\n\020isMotionDetected\030\001 \001(\010\"#\n\016MotionRes" +
+      "ponse\022\021\n\tisAlarmOn\030\001 \001(\0102\233\002\n\017LightingSer" +
       "vice\022K\n\014ToggleLights\022\033.com.ken.light.Lig" +
       "htRequest\032\034.com.ken.light.LightResponse\"" +
       "\000\022h\n\027InteractiveLightControl\022\".com.ken.l" +
       "ight.LightControlRequest\032#.com.ken.light" +
-      ".LightControlResponse\"\000(\0010\001B$\n\rcom.ken.l" +
-      "ightB\021LightServiceProtoP\001b\006proto3"
+      ".LightControlResponse\"\000(\0010\001\022Q\n\014StreamMot" +
+      "ion\022\034.com.ken.light.MotionRequest\032\035.com." +
+      "ken.light.MotionResponse\"\000(\0010\001B$\n\rcom.ke" +
+      "n.lightB\021LightServiceProtoP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -92,6 +106,18 @@ public final class LightServiceProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_ken_light_LightControlResponse_descriptor,
         new java.lang.String[] { "LightId", "Success", "Message", });
+    internal_static_com_ken_light_MotionRequest_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_com_ken_light_MotionRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_ken_light_MotionRequest_descriptor,
+        new java.lang.String[] { "IsMotionDetected", });
+    internal_static_com_ken_light_MotionResponse_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_com_ken_light_MotionResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_ken_light_MotionResponse_descriptor,
+        new java.lang.String[] { "IsAlarmOn", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

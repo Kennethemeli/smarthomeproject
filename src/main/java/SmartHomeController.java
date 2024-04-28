@@ -8,6 +8,7 @@ import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -28,6 +29,8 @@ public class SmartHomeController {
     public TextField lightIdField;
     public ToggleButton toggleButton;
     public Label responseLabel;
+    public Button monitorButton;
+    public Circle monitorLight;
     @FXML
     private Label tempLabel;
     @FXML
@@ -171,4 +174,53 @@ public class SmartHomeController {
             }
         }
     }
+
+    public void monitorButtonAction(ActionEvent actionEvent) {
+        Task<Void> motionDetectionTask = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                StreamObserver<MotionRequest> requestObserver = asyncStub.streamMotion(new StreamObserver<MotionResponse>() {
+                    @Override
+                    public void onNext(MotionResponse response) {
+                        System.out.println("Alarm is on: " + response.getIsAlarmOn());
+                        Platform.runLater(() -> {
+                            if (response.getIsAlarmOn()) {
+                                monitorLight.setFill(Color.GREEN);
+                            } else {
+                                monitorLight.setFill(Color.RED);
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onError(Throwable throwable) {
+                        System.err.println("Error in streaming motion: " + throwable.getMessage());
+                    }
+
+                    @Override
+                    public void onCompleted() {
+                        // Add any completion logic here if needed
+                    }
+                });
+
+                try {
+                    // Simulate motion detection
+                    for (int i = 0; i < 10; i++) {
+                        boolean isMotionDetected = i % 2 == 0;
+                        requestObserver.onNext(MotionRequest.newBuilder().setIsMotionDetected(isMotionDetected).build());
+                        Thread.sleep(1000); // Simulate motion detection event
+                    }
+                } catch (RuntimeException | InterruptedException e) {
+                    requestObserver.onError(e);
+                }
+                requestObserver.onCompleted();
+                return null;
+            }
+        };
+
+        Thread thread = new Thread(motionDetectionTask);
+        thread.setDaemon(true); // Mark the thread as daemon so it automatically terminates when the application exits
+        thread.start();
+    }
 }
+

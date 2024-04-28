@@ -4,10 +4,6 @@
 package com.ken.light;
 
 /**
- * <pre>
- * Request for interactive light control
- * </pre>
- *
  * Protobuf type {@code com.ken.light.LightControlRequest}
  */
 public  final class LightControlRequest extends
@@ -302,10 +298,6 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * Request for interactive light control
-   * </pre>
-   *
    * Protobuf type {@code com.ken.light.LightControlRequest}
    */
   public static final class Builder extends

@@ -23,18 +23,10 @@ public interface LightControlResponseOrBuilder extends
   boolean getSuccess();
 
   /**
-   * <pre>
-   * feedback message
-   * </pre>
-   *
    * <code>string message = 3;</code>
    */
   java.lang.String getMessage();
   /**
-   * <pre>
-   * feedback message
-   * </pre>
-   *
    * <code>string message = 3;</code>
    */
   com.google.protobuf.ByteString

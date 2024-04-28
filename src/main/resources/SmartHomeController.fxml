@@ -28,4 +28,6 @@
    <TextField fx:id="lightIdField" layoutX="260.0" layoutY="210.0" />
    <ToggleButton fx:id="toggleButton" layoutX="438.0" layoutY="210.0" mnemonicParsing="false" onAction="#handleToggleLightAction" text="ToggleButton" />
    <Label fx:id="responseLabel" layoutX="303.0" layoutY="248.0" />
+   <Button fx:id="monitorButton" layoutX="305.0" layoutY="265.0" mnemonicParsing="false" onAction="#monitorButtonAction" text="Monitor" />
+   <Circle fx:id="monitorLight" fill="DODGERBLUE" layoutX="338.0" layoutY="326.0" radius="19.0" stroke="BLACK" strokeType="INSIDE" />
 </AnchorPane>

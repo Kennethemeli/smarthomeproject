@@ -4,10 +4,6 @@
 package com.ken.light;
 
 /**
- * <pre>
- * Response for toggling lights
- * </pre>
- *
  * Protobuf type {@code com.ken.light.LightResponse}
  */
 public  final class LightResponse extends
@@ -251,10 +247,6 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * Response for toggling lights
-   * </pre>
-   *
    * Protobuf type {@code com.ken.light.LightResponse}
    */
   public static final class Builder extends

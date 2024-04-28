@@ -8,10 +8,6 @@ public interface LightRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <pre>
-   * true to turn on, false to turn off
-   * </pre>
-   *
    * <code>bool on = 1;</code>
    */
   boolean getOn();

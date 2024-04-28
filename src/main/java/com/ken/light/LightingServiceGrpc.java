@@ -80,6 +80,37 @@ public final class LightingServiceGrpc {
     return getInteractiveLightControlMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.ken.light.MotionRequest,
+      com.ken.light.MotionResponse> getStreamMotionMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "StreamMotion",
+      requestType = com.ken.light.MotionRequest.class,
+      responseType = com.ken.light.MotionResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+  public static io.grpc.MethodDescriptor<com.ken.light.MotionRequest,
+      com.ken.light.MotionResponse> getStreamMotionMethod() {
+    io.grpc.MethodDescriptor<com.ken.light.MotionRequest, com.ken.light.MotionResponse> getStreamMotionMethod;
+    if ((getStreamMotionMethod = LightingServiceGrpc.getStreamMotionMethod) == null) {
+      synchronized (LightingServiceGrpc.class) {
+        if ((getStreamMotionMethod = LightingServiceGrpc.getStreamMotionMethod) == null) {
+          LightingServiceGrpc.getStreamMotionMethod = getStreamMotionMethod =
+              io.grpc.MethodDescriptor.<com.ken.light.MotionRequest, com.ken.light.MotionResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "StreamMotion"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.ken.light.MotionRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.ken.light.MotionResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new LightingServiceMethodDescriptorSupplier("StreamMotion"))
+              .build();
+        }
+      }
+    }
+    return getStreamMotionMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -132,9 +163,6 @@ public final class LightingServiceGrpc {
   public interface AsyncService {
 
     /**
-     * <pre>
-     * Unary RPC to toggle lights
-     * </pre>
      */
     default void toggleLights(com.ken.light.LightRequest request,
         io.grpc.stub.StreamObserver<com.ken.light.LightResponse> responseObserver) {
@@ -142,13 +170,17 @@ public final class LightingServiceGrpc {
     }
 
     /**
-     * <pre>
-     * Bi-directional streaming RPC for continuous control and feedback
-     * </pre>
      */
     default io.grpc.stub.StreamObserver<com.ken.light.LightControlRequest> interactiveLightControl(
         io.grpc.stub.StreamObserver<com.ken.light.LightControlResponse> responseObserver) {
       return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getInteractiveLightControlMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default io.grpc.stub.StreamObserver<com.ken.light.MotionRequest> streamMotion(
+        io.grpc.stub.StreamObserver<com.ken.light.MotionResponse> responseObserver) {
+      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getStreamMotionMethod(), responseObserver);
     }
   }
 
@@ -186,9 +218,6 @@ public final class LightingServiceGrpc {
     }
 
     /**
-     * <pre>
-     * Unary RPC to toggle lights
-     * </pre>
      */
     public void toggleLights(com.ken.light.LightRequest request,
         io.grpc.stub.StreamObserver<com.ken.light.LightResponse> responseObserver) {
@@ -197,14 +226,19 @@ public final class LightingServiceGrpc {
     }
 
     /**
-     * <pre>
-     * Bi-directional streaming RPC for continuous control and feedback
-     * </pre>
      */
     public io.grpc.stub.StreamObserver<com.ken.light.LightControlRequest> interactiveLightControl(
         io.grpc.stub.StreamObserver<com.ken.light.LightControlResponse> responseObserver) {
       return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
           getChannel().newCall(getInteractiveLightControlMethod(), getCallOptions()), responseObserver);
+    }
+
+    /**
+     */
+    public io.grpc.stub.StreamObserver<com.ken.light.MotionRequest> streamMotion(
+        io.grpc.stub.StreamObserver<com.ken.light.MotionResponse> responseObserver) {
+      return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
+          getChannel().newCall(getStreamMotionMethod(), getCallOptions()), responseObserver);
     }
   }
 
@@ -228,9 +262,6 @@ public final class LightingServiceGrpc {
     }
 
     /**
-     * <pre>
-     * Unary RPC to toggle lights
-     * </pre>
      */
     public com.ken.light.LightResponse toggleLights(com.ken.light.LightRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -258,9 +289,6 @@ public final class LightingServiceGrpc {
     }
 
     /**
-     * <pre>
-     * Unary RPC to toggle lights
-     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<com.ken.light.LightResponse> toggleLights(
         com.ken.light.LightRequest request) {
@@ -271,6 +299,7 @@ public final class LightingServiceGrpc {
 
   private static final int METHODID_TOGGLE_LIGHTS = 0;
   private static final int METHODID_INTERACTIVE_LIGHT_CONTROL = 1;
+  private static final int METHODID_STREAM_MOTION = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -306,6 +335,9 @@ public final class LightingServiceGrpc {
         case METHODID_INTERACTIVE_LIGHT_CONTROL:
           return (io.grpc.stub.StreamObserver<Req>) serviceImpl.interactiveLightControl(
               (io.grpc.stub.StreamObserver<com.ken.light.LightControlResponse>) responseObserver);
+        case METHODID_STREAM_MOTION:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.streamMotion(
+              (io.grpc.stub.StreamObserver<com.ken.light.MotionResponse>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -328,6 +360,13 @@ public final class LightingServiceGrpc {
               com.ken.light.LightControlRequest,
               com.ken.light.LightControlResponse>(
                 service, METHODID_INTERACTIVE_LIGHT_CONTROL)))
+        .addMethod(
+          getStreamMotionMethod(),
+          io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
+            new MethodHandlers<
+              com.ken.light.MotionRequest,
+              com.ken.light.MotionResponse>(
+                service, METHODID_STREAM_MOTION)))
         .build();
   }
 
@@ -378,6 +417,7 @@ public final class LightingServiceGrpc {
               .setSchemaDescriptor(new LightingServiceFileDescriptorSupplier())
               .addMethod(getToggleLightsMethod())
               .addMethod(getInteractiveLightControlMethod())
+              .addMethod(getStreamMotionMethod())
               .build();
         }
       }
